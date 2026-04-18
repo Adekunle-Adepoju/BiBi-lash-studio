@@ -35,27 +35,30 @@ class Booking(models.Model):
 
 @receiver(post_save, sender=Booking)
 def send_booking_emails(sender, instance, created, **kwargs):
-    if created:
-        # Email to client when they submit
-        send_mail(
-            subject='Booking Received — BiBi Lash Studio',
-            message=f'Hi {instance.first_name},\n\nWe have received your booking request for {instance.service} on {instance.preferred_date}.\n\nWe will confirm your appointment within 24 hours.\n\nBiBi Lash Studio',
-            from_email=None,
-            recipient_list=[instance.email],
-        )
-        # Email to BiBi Lash when a new booking comes in
-        send_mail(
-            subject='New Booking Request',
-            message=f'New booking from {instance.first_name} {instance.last_name}\nService: {instance.service}\nDate: {instance.preferred_date}\nPhone: {instance.phone}\nEmail: {instance.email}',
-            from_email=None,
-            recipient_list=['bibilash@gmail.com'],  # replace with actual email
-        )
-        confirmed = models.BooleanField(default=False)
-
-    if not created and instance.confirmed:
+    try:
+        if created:
+            # Email to client when they submit
             send_mail(
-                subject='Booking Confirmed — BiBi Lash Studio',
-                message=f'Hi {instance.first_name},\n\nYour appointment for {instance.service} on {instance.preferred_date} has been confirmed.\n\nSee you soon!\nBiBi Lash Studio',
+                subject='Booking Received — BiBi Lash Studio',
+                message=f'Hi {instance.first_name},\n\nWe have received your booking request for {instance.service} on {instance.preferred_date}.\n\nWe will confirm your appointment within 24 hours.\n\nBiBi Lash Studio',
                 from_email=None,
                 recipient_list=[instance.email],
             )
+            # Email to BiBi Lash when a new booking comes in
+            send_mail(
+                subject='New Booking Request',
+                message=f'New booking from {instance.first_name} {instance.last_name}\nService: {instance.service}\nDate: {instance.preferred_date}\nPhone: {instance.phone}\nEmail: {instance.email}',
+                from_email=None,
+                recipient_list=['bibilash@gmail.com'],  # replace with actual email
+            )
+            confirmed = models.BooleanField(default=False)
+
+        if not created and instance.confirmed:
+                send_mail(
+                    subject='Booking Confirmed — BiBi Lash Studio',
+                    message=f'Hi {instance.first_name},\n\nYour appointment for {instance.service} on {instance.preferred_date} has been confirmed.\n\nSee you soon!\nBiBi Lash Studio',
+                    from_email=None,
+                    recipient_list=[instance.email],
+                )
+    except Exception:
+        pass
