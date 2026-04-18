@@ -26,7 +26,6 @@ TEMPLATES = [{'BACKEND':'django.template.backends.django.DjangoTemplates','DIRS'
 WSGI_APPLICATION = 'bibi_backend.wsgi.application'
 DATABASES = {'default':{'ENGINE':'django.db.backends.sqlite3','NAME':BASE_DIR/'db.sqlite3'}}
 # Dev: prints emails to the terminal
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # Production SMTP — uncomment and fill in:
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -36,7 +35,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'adekunleadepoju916@gmail.com'
 EMAIL_HOST_PASSWORD = 'kmnmoarpjefztlby'
 STUDIO_EMAIL = 'adekunleadepoju916@gmail.com'
-DEFAULT_FROM_EMAIL = 'Bibi Lash Studio <adekunleaepoju916@gmail.com>'
+DEFAULT_FROM_EMAIL = 'Bibi Lash Studio <adekunleadepoju916@gmail.com>'
 STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LANGUAGE_CODE = 'en-us'
