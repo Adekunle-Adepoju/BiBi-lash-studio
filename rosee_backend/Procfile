@@ -1,1 +1,1 @@
-web: gunicorn bibi_backend.wsgi 
+web: gunicorn bibi_backend.wsgi --bind 0.0.0.0:$PORT 
