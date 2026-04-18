@@ -34,6 +34,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'adekunleadepoju916@gmail.com'
 EMAIL_HOST_PASSWORD = 'kmnmoarpjefztlby'
+EMAIL_TIMEOUT = 5
 STUDIO_EMAIL = 'adekunleadepoju916@gmail.com'
 DEFAULT_FROM_EMAIL = 'Bibi Lash Studio <adekunleadepoju916@gmail.com>'
 STATIC_URL = '/static/'
@@ -42,6 +43,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Lagos'
 USE_I18N = True
 USE_TZ = True
+
 
 
 CSRF_TRUSTED_ORIGINS = ['https://bibi-lash-studio-production.up.railway.app']
