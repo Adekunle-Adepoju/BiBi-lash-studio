@@ -43,3 +43,6 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Lagos'
 USE_I18N = True
 USE_TZ = True
+
+
+CSRF_TRUSTED_ORIGINS = ['https://bibi-lash-studio-production.up.railway.app']
